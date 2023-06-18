@@ -1,7 +1,10 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from scipy.optimize import minimize, Bounds, LinearConstraint, NonlinearConstraint
+from scipy.optimize import minimize
+from scipy.optimize import Bounds
+from scipy.optimize import LinearConstraint
+from scipy.optimize import NonlinearConstraint
 
 CMAP = plt.colormaps['plasma']
 
@@ -12,9 +15,9 @@ def load_data(file_path: str) -> pd.DataFrame:
 
 if __name__ == '__main__':
     data = load_data('data/time_series.csv')
-    time = data['Time']
-    load = data['Loadshape']
-    solar = data['Solar']
+    time = data['Time'].to_numpy()
+    load = data['Loadshape'].to_numpy()
+    solar = data['Solar'].to_numpy()
 
     fig, ax = plt.subplots()
     ax.plot(time, load)
